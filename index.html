@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDoNER AI-DPR Evaluation System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gov: {
+              background: '#030712', // Deepest Obsidian
+              surface: '#0f172a',    // Dark Navy surface
+              card: '#1e293b',       // Slate Blue card
+              border: '#334155',     // Medium Slate border
+              primary: '#6366f1',    // Vibrant Indigo
+              primaryDeep: '#4f46e5',
+              accent: '#a855f7',     // Electric Violet
+              success: '#10b981',    // Emerald
+              warning: '#f59e0b',    // Amber
+              danger: '#ef4444',     // Red
+              text: {
+                primary: '#f8fafc',
+                secondary: '#94a3b8',
+                muted: '#475569'
+              }
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3)',
+            'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
+            'glow': '0 0 20px rgba(61, 90, 254, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --background: #030712;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--background);
+      color: #f8fafc;
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #030712;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(248, 250, 252, 0.1);
+    }
+
+    .ai-glow {
+      box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.2);
+    }
+
+    .page-transition-enter {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .page-transition-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 300ms, transform 300ms;
+    }
+
+    /* Global Content Text Styles - Executive Summary Standard */
+    .content-text {
+      font-size: 0.875rem;
+      line-height: 1.625;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .content-text-bullet {
+      font-size: 0.875rem;
+      line-height: 1.625;
+      color: #94a3b8;
+      font-weight: 500;
+      max-width: 65ch;
+    }
+  </style>
+  <script>
+    // Polyfill process.env for browser environment
+    window.process = window.process || { env: { API_KEY: "" } };
+  </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-gov-background text-gov-text-primary selection:bg-gov-primary selection:text-white antialiased">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

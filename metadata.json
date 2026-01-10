@@ -1,0 +1,6 @@
+
+{
+  "name": "MDoNER AI-DPR Evaluator",
+  "description": "An AI-powered evaluation system for Detailed Project Reports (DPRs) for the Ministry of Development of North Eastern Region, featuring risk prediction and multi-lingual support.",
+  "requestFramePermissions": ["camera", "microphone"]
+}
