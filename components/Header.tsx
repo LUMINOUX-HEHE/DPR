@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ user, lang, setLang, onLogout }) => {
           </div>
           <div>
             <p className="text-[8px] font-black text-gov-primary uppercase tracking-[0.4em] leading-none mb-1">Regional_Unit_HQ</p>
-            <h1 className="text-lg font-black tracking-tighter text-white leading-tight uppercase font-display">Prasthav-<span className="text-gov-text-muted font-light">AI</span></h1>
+            <h1 className="text-lg font-black tracking-tighter text-gov-primary leading-tight uppercase font-display">Prasthav-<span className="text-gov-text-muted font-light">AI</span></h1>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ user, lang, setLang, onLogout }) => {
           <input
             type="text"
             placeholder="Search by DPR ID or Name..."
-            className="w-full bg-gov-background/50 border border-gov-border/50 rounded-xl py-2 pl-12 pr-4 text-[10px] font-black text-white placeholder:text-gov-text-muted focus:outline-none focus:border-gov-primary transition-all uppercase tracking-widest"
+            className="w-full bg-gov-background/50 border border-gov-border/50 rounded-xl py-2 pl-12 pr-4 text-[10px] font-black text-gov-primary placeholder:text-gov-text-muted focus:outline-none focus:border-gov-primary transition-all uppercase tracking-widest"
           />
         </div>
       </div>
@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ user, lang, setLang, onLogout }) => {
               <button
                 key={l}
                 onClick={() => setLang(l as Language)}
-                className={`text-[9px] font-black px-3 py-1.5 rounded-lg border transition-all ${lang === l ? 'bg-gov-primary border-gov-primary text-white' : 'border-gov-border text-gov-text-muted hover:text-white'}`}
+                className={`text-[9px] font-black px-3 py-1.5 rounded-lg border transition-all ${lang === l ? 'bg-gov-primary border-gov-primary text-white' : 'border-gov-border text-gov-text-muted hover:text-gov-primary'}`}
               >
                 {l === 'EN' ? 'ENGLISH' : l === 'HI' ? 'हिंदी' : 'অসমীয়া'}
               </button>
@@ -55,13 +55,13 @@ const Header: React.FC<HeaderProps> = ({ user, lang, setLang, onLogout }) => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <button className="relative p-2.5 rounded-xl bg-gov-background border border-gov-border text-gov-text-muted hover:text-white transition-all">
+          <button className="relative p-2.5 rounded-xl bg-gov-background border border-gov-border text-gov-text-muted hover:text-gov-primary transition-all">
             <Bell size={18} />
           </button>
 
           <div className="flex items-center space-x-4 pl-4 group relative">
             <div className="text-right hidden sm:block leading-none">
-              <p className="text-[10px] font-black text-white uppercase tracking-widest mb-1">{user.id}</p>
+              <p className="text-[10px] font-black text-gov-primary uppercase tracking-widest mb-1">{user.id}</p>
               <p className="text-[8px] font-medium text-gov-text-muted uppercase tracking-widest">Official Access</p>
             </div>
             <div className="h-10 w-10 rounded-xl bg-gov-primary p-0.5 shadow-glow group-hover:scale-105 transition-transform cursor-pointer">

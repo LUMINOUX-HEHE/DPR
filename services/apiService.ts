@@ -12,17 +12,31 @@ export const apiService = {
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch(`${API_BASE_URL}/dpr/upload`, {
-            method: 'POST',
-            body: formData,
-        });
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout for upload
 
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || 'Failed to upload DPR');
+        try {
+            const response = await fetch(`${API_BASE_URL}/dpr/upload`, {
+                method: 'POST',
+                body: formData,
+                signal: controller.signal,
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || 'Failed to upload DPR');
+            }
+
+            return response.json();
+        } catch (error) {
+            clearTimeout(timeoutId);
+            if (error.name === 'AbortError') {
+                throw new Error('Upload timeout - backend server may not be responding');
+            }
+            throw error;
         }
-
-        return response.json();
     },
 
     /**
@@ -45,13 +59,39 @@ export const apiService = {
      * @returns Array of DPR objects with metadata and analysis results
      */
     async getAllDPRs(): Promise<any[]> {
-        const response = await fetch(`${API_BASE_URL}/dpr/list`);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-        if (!response.ok) {
-            throw new Error('Failed to fetch DPR list');
+        try {
+            console.log(`API_BASE_URL: ${API_BASE_URL}`);
+            const response = await fetch(`${API_BASE_URL}/dpr/list`, {
+                signal: controller.signal,
+                headers: {
+                    'Accept': 'application/json',
+                }
+            });
+            
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error(`HTTP ${response.status}: ${errorText}`);
+                throw new Error(`Failed to fetch DPR list: ${response.status} ${response.statusText}`);
+            }
+
+            const data = await response.json();
+            console.log('API response data:', data);
+            return data;
+        } catch (error) {
+            clearTimeout(timeoutId);
+            console.error('getAllDPRs error:', error);
+            
+            if (error.name === 'AbortError') {
+                throw new Error('Request timeout - backend server may not be responding');
+            }
+            
+            throw error;
         }
-
-        return response.json();
     },
 
     /**

@@ -52,7 +52,7 @@ const Landing: React.FC = () => {
     <div className="bg-gov-background text-gov-text-primary flex flex-col selection:bg-gov-primary selection:text-white font-sans overflow-x-hidden w-full">
       {/* Background Layer */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-0"
-        style={{ backgroundImage: 'radial-gradient(circle, #6366f1 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+        style={{ backgroundImage: 'radial-gradient(circle, var(--gov-primary) 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[70%] bg-gov-primary/10 rounded-full blur-[140px]"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[70%] h-[70%] bg-gov-accent/5 rounded-full blur-[140px]"></div>
@@ -90,7 +90,7 @@ const Landing: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             onClick={() => navigate('/login')}
-            className="bg-white text-gov-background px-8 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] shadow-premium hover:bg-gov-primary hover:text-white transition-all whitespace-nowrap active:scale-95"
+            className="bg-white text-gov-primary px-8 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] shadow-premium hover:bg-gov-primary hover:text-white transition-all whitespace-nowrap active:scale-95"
           >
             Access Portal
           </motion.button>
@@ -114,7 +114,7 @@ const Landing: React.FC = () => {
 
               <h2 className="text-6xl md:text-8xl xl:text-9xl font-black text-white tracking-tighter leading-[0.85] mb-10 drop-shadow-xl">
                 ACCELERATED <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gov-primary via-gov-primaryDeep to-gov-primary bg-[length:200%_auto] animate-gradient-flow filter drop-shadow-[0_0_30px_rgba(99,102,241,0.5)]">SCRUTINY.</span>
+                SCRUTINY.
               </h2>
 
               <p className="text-gov-text-secondary text-xl md:text-2xl font-medium leading-[1.4] mb-16 max-w-4xl opacity-80">
@@ -136,7 +136,7 @@ const Landing: React.FC = () => {
 
                   <div className="flex items-center space-x-6 px-8">
                     <div className="flex flex-col">
-                      <span className="text-[11px] font-black text-white uppercase tracking-[0.3em]">SECURE_ENTRY</span>
+                      <span className="text-[11px] font-black text-gov-primary uppercase tracking-[0.3em]">SECURE_ENTRY</span>
                       <span className="text-[9px] font-bold text-gov-text-muted uppercase tracking-[0.2em]">Regional_Auth_Unit</span>
                     </div>
                     <div className="h-8 w-px bg-gov-border/50"></div>
@@ -183,7 +183,7 @@ const Landing: React.FC = () => {
                   <stat.icon size={24} />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none mb-1">{stat.value}</span>
+                  <span className="text-4xl md:text-5xl font-black text-gov-primary tracking-tighter leading-none mb-1">{stat.value}</span>
                   <span className="text-[10px] font-black text-gov-text-muted uppercase tracking-[0.2em]">{stat.label}</span>
                 </div>
               </motion.div>
@@ -207,21 +207,21 @@ const Landing: React.FC = () => {
                 </div>
                 <div className="space-y-6 text-left">
                   <p className="text-[14px] font-black text-gov-primary uppercase tracking-[0.5em]">The Objective</p>
-                  <h3 className="text-6xl md:text-7xl xl:text-8xl font-black text-white tracking-tighter leading-[0.9] uppercase font-display">Practical <br /> Efficiency.</h3>
+                  <h3 className="text-6xl md:text-7xl xl:text-8xl font-black text-gov-primary tracking-tighter leading-[0.9] uppercase font-display">Practical <br /> Efficiency.</h3>
                 </div>
                 <p className="text-gov-text-secondary text-xl font-medium leading-relaxed max-w-3xl opacity-80">
                   Prasthav-AI solves the challenge of manual DPR review by providing a semi-automated validation layer that ensures every submission follows MDoNER standards while identifying hidden risks.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10">
                   <div className="space-y-4 group">
-                    <h5 className="text-md font-black text-white uppercase tracking-widest flex items-center group-hover:text-gov-primary transition-colors">
+                    <h5 className="text-md font-black text-gov-primary uppercase tracking-widest flex items-center group-hover:text-gov-primaryDeep transition-colors">
                       <Scale className="mr-5 text-gov-primary" size={20} />
                       Unbiased Review
                     </h5>
                     <p className="text-sm text-gov-text-secondary leading-relaxed font-medium">Ensuring fairness across all 8 regional states.</p>
                   </div>
                   <div className="space-y-4 group">
-                    <h5 className="text-md font-black text-white uppercase tracking-widest flex items-center group-hover:text-gov-primary transition-colors">
+                    <h5 className="text-md font-black text-gov-primary uppercase tracking-widest flex items-center group-hover:text-gov-primaryDeep transition-colors">
                       <Activity className="mr-5 text-gov-primary" size={20} />
                       Real-time Analytics
                     </h5>
@@ -237,8 +237,8 @@ const Landing: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="flex-1 relative w-full"
               >
-                <div className="relative glass-panel rounded-[3.5rem] p-5 border-gov-border/30 w-full overflow-hidden">
-                  <div className="bg-gov-surface/50 rounded-[2.5rem] p-16 border border-gov-border/30 overflow-hidden relative group min-h-[500px] flex flex-col justify-center">
+                <div className="relative glass-panel rounded-[3.5rem] p-5 border-gov-border/30 w-full overflow-hidden backdrop-blur-2xl">
+                  <div className="bg-gov-surface/40 backdrop-blur-xl rounded-[2.5rem] p-16 border border-gov-border/30 overflow-hidden relative group min-h-[500px] flex flex-col justify-center">
                     <div className="relative z-10 space-y-12">
                       <h4 className="text-[12px] font-black text-gov-accent uppercase tracking-[0.5em] mb-12 flex items-center justify-center">
                         <Globe size={20} className="mr-4" />
@@ -253,7 +253,7 @@ const Landing: React.FC = () => {
                         ].map((s, i) => (
                           <div key={i} className="bg-gov-background/50 p-6 rounded-2xl border border-gov-border/30 text-center">
                             <p className="text-[10px] font-black text-gov-text-muted uppercase tracking-widest mb-2">{s.name}</p>
-                            <p className="text-2xl font-black text-white">{s.load}%</p>
+                            <p className="text-2xl font-black text-gov-primary">{s.load}%</p>
                             <p className="text-[8px] font-bold text-gov-primary uppercase tracking-widest mt-1">Uptime</p>
                           </div>
                         ))}
@@ -276,7 +276,7 @@ const Landing: React.FC = () => {
         <section id="process" className="py-48 bg-gov-surface/10 border-y border-gov-border/50 relative overflow-hidden w-full">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={revealVariants} className={`${fluidPx} w-full text-center mb-32`}>
             <p className="text-[14px] font-black text-gov-primary uppercase tracking-[0.5em] mb-6">Automated Workflow</p>
-            <h3 className="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase leading-[0.85] mb-8 font-display">Evaluation <br /> Pipeline.</h3>
+            <h3 className="text-6xl md:text-8xl font-black text-gov-primary tracking-tighter uppercase leading-[0.85] mb-8 font-display">Evaluation <br /> Pipeline.</h3>
           </motion.div>
 
           <div className={`${fluidPx} w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10`}>
@@ -287,12 +287,12 @@ const Landing: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[2.5rem] bg-gov-card border border-gov-border/40 text-left hover:border-gov-primary/30 transition-all group"
+                className="p-10 rounded-[2.5rem] bg-gov-card/60 backdrop-blur-xl border border-gov-border/40 text-left hover:border-gov-primary/30 transition-all group"
               >
                 <div className="w-14 h-14 rounded-xl bg-gov-surface flex items-center justify-center text-gov-primary mb-10 group-hover:bg-gov-primary group-hover:text-white transition-all">
                   <step.icon size={24} />
                 </div>
-                <h4 className="text-xl font-black text-white uppercase tracking-widest mb-4 leading-none">{step.title}</h4>
+                <h4 className="text-xl font-black text-gov-primary uppercase tracking-widest mb-4 leading-none">{step.title}</h4>
                 <p className="text-sm text-gov-text-secondary leading-relaxed font-medium opacity-80">{step.desc}</p>
               </motion.div>
             ))}
@@ -305,15 +305,15 @@ const Landing: React.FC = () => {
             <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-16">
               <div className="space-y-6 text-left">
                 <p className="text-[14px] font-black text-gov-accent uppercase tracking-[0.5em]">Field Proven</p>
-                <h3 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] uppercase font-display">Impact <br /> Metrics.</h3>
+                <h3 className="text-6xl md:text-8xl font-black text-gov-primary tracking-tighter leading-[0.9] uppercase font-display">Impact <br /> Metrics.</h3>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {caseStudies.map((cs, i) => (
-                <motion.div key={i} variants={revealVariants} className="group p-12 rounded-[3.5rem] bg-gov-card border border-gov-border/40 hover:border-gov-primary/50 transition-all duration-700 relative flex flex-col justify-between min-h-[450px]">
+                <motion.div key={i} variants={revealVariants} className="group p-12 rounded-[3.5rem] bg-gov-card/60 backdrop-blur-xl border border-gov-border/40 hover:border-gov-primary/50 transition-all duration-700 relative flex flex-col justify-between min-h-[450px]">
                   <div className="space-y-8 relative z-10 text-left">
-                    <div className="px-5 py-2 rounded-full bg-gov-surface border border-gov-primary/20 text-[10px] font-black text-white uppercase tracking-[0.2em] w-fit">{cs.state}</div>
-                    <h4 className="text-3xl font-black text-white tracking-tighter uppercase leading-tight font-display">{cs.sector}</h4>
+                    <div className="px-5 py-2 rounded-full bg-gov-surface border border-gov-border/30 text-[10px] font-black text-gov-primary uppercase tracking-[0.2em] w-fit">{cs.state}</div>
+                    <h4 className="text-3xl font-black text-gov-primary tracking-tighter uppercase leading-tight font-display">{cs.sector}</h4>
                     <p className="text-[11px] font-black text-gov-primary uppercase tracking-[0.3em]">{cs.impact}</p>
                     <p className="text-sm text-gov-text-secondary leading-relaxed font-medium opacity-90">{cs.desc}</p>
                   </div>
@@ -331,7 +331,7 @@ const Landing: React.FC = () => {
                 <div className="w-20 h-20 bg-gov-primary/10 rounded-[2rem] flex items-center justify-center text-gov-primary mx-auto">
                   <ShieldCheck size={40} />
                 </div>
-                <h3 className="text-7xl md:text-9xl font-black text-white tracking-tighter uppercase leading-[0.8] font-display">Official <br /> Access.</h3>
+                <h3 className="text-7xl md:text-9xl font-black text-gov-primary tracking-tighter uppercase leading-[0.8] font-display">Official <br /> Access.</h3>
                 <p className="text-2xl md:text-3xl font-bold text-gov-text-secondary uppercase italic opacity-60">Authorized MDoNER personnel only.</p>
                 <button onClick={() => navigate('/login')} className="bg-gov-primary hover:bg-gov-primaryDeep text-white px-24 py-9 rounded-[3rem] text-sm font-black uppercase tracking-[0.5em] shadow-glow transition-all active:scale-95">
                   Connect to Portal
@@ -348,12 +348,12 @@ const Landing: React.FC = () => {
           <div className="space-y-12">
             <div className="flex items-center space-x-5">
               <div className="h-14 w-14 rounded-xl bg-gov-primary flex items-center justify-center text-white"><FileSearch size={28} /></div>
-              <h4 className="text-2xl font-black text-white tracking-tighter uppercase leading-[0.95] font-display">MDoNER <br />Prasthav-AI</h4>
+              <h4 className="text-2xl font-black text-gov-primary tracking-tighter uppercase leading-[0.95] font-display">MDoNER <br />Prasthav-AI</h4>
             </div>
           </div>
           {['Platform', 'Governance', 'Contact'].map((title, i) => (
             <div key={i} className="space-y-10">
-              <h5 className="text-[12px] font-black text-white uppercase tracking-[0.5em]">{title}</h5>
+              <h5 className="text-[12px] font-black text-gov-primary uppercase tracking-[0.5em]">{title}</h5>
               <ul className="space-y-6">
                 {['Directives', 'Standards', 'Support', 'Privacy'].map((link, j) => (
                   <li key={j}><a href="#" className="text-[10px] font-black text-gov-text-muted hover:text-gov-primary transition-all uppercase tracking-[0.3em] block">{link}</a></li>
@@ -364,7 +364,7 @@ const Landing: React.FC = () => {
         </div>
         <div className={`${fluidPx} w-full mt-32 pt-16 border-t border-gov-border/20 flex flex-col md:flex-row justify-between items-center gap-10`}>
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png" className="h-12 opacity-30 grayscale contrast-200" alt="India Symbol" />
-          <p className="text-[10px] font-black text-white tracking-[0.5em] uppercase leading-none opacity-50">SIH 2024 · MINISTRY OF DoNER · PRISTINE_SOLUTION_V1</p>
+          <p className="text-[10px] font-black text-gov-primary tracking-[0.5em] uppercase leading-none opacity-50">SIH 2024 · MINISTRY OF DoNER · PRISTINE_SOLUTION_V1</p>
         </div>
       </footer>
     </div>

@@ -4,7 +4,7 @@ import {
   LayoutDashboard, FileText, PieChart,
   ShieldCheck, Users, Settings, LogOut,
   BarChart3, Activity, Zap, Database,
-  ChevronRight, Lock, Key, ClipboardCheck, Shield
+  ChevronRight, Lock, Key, Shield
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { UserRole, Language } from '../types';
@@ -28,7 +28,6 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, lang, role }) =
       cat: 'Evaluation', items: [
         { name: 'DPR Repository', id: 'dpr-management', icon: FileText },
         { name: 'AI Validation', id: 'evaluation', icon: ShieldCheck },
-        { name: 'MDoNER Rules', id: 'guidelines', icon: ClipboardCheck },
       ]
     },
     {
@@ -40,7 +39,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, lang, role }) =
   ];
 
   return (
-    <aside className="w-72 bg-gov-background border-r border-gov-border/50 h-screen sticky top-0 flex flex-col p-6 z-50">
+    <aside className="w-72 bg-gov-surface border-r border-gov-border/50 h-screen sticky top-0 flex flex-col p-6 z-50">
       <div className="flex-1 space-y-10">
         <div className="px-5 py-6 rounded-2xl bg-gov-surface border border-gov-border/30 relative overflow-hidden text-left">
           <div className="flex items-center space-x-3 mb-3 text-gov-primary">
@@ -62,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, lang, role }) =
                   if (item.adminOnly && role !== UserRole.ADMIN) return null;
 
                   const isActive = currentView === item.id;
-                  const isLocked = item.id === 'guidelines' || item.id === 'settings';
+                  const isLocked = item.id === 'settings';
 
                   return (
                     <button
@@ -70,7 +69,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, lang, role }) =
                       onClick={() => !isLocked && setView(item.id)}
                       className={`flex items-center space-x-4 px-5 py-3.5 w-full rounded-xl text-[10px] font-black uppercase tracking-widest transition-all group ${isActive
                         ? 'bg-gov-primary text-white shadow-soft scale-[1.02]'
-                        : 'text-gov-text-secondary hover:text-white hover:bg-gov-surface/50'
+                        : 'text-gov-text-secondary hover:text-gov-primary hover:bg-gov-surface/50'
                         }`}
                     >
                       <item.icon size={16} className="group-hover:scale-110 transition-transform" />

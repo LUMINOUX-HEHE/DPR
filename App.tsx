@@ -12,6 +12,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import OfflineBanner from './components/OfflineBanner';
 import ErrorBoundary from './components/ErrorBoundary';
+import { Settings } from 'lucide-react';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -90,11 +91,42 @@ const App: React.FC = () => {
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
-                {currentView === 'dashboard' && <Dashboard lang={lang} role={user?.role} onSelectDPR={navigateToEvaluation} />}
-                {currentView === 'dpr-management' && <DPRManagement lang={lang} role={user?.role} onEvaluate={navigateToEvaluation} />}
-                {currentView === 'evaluation' && <DPREvaluation id={selectedDprId} lang={lang} />}
-                {currentView === 'analytics' && <Analytics lang={lang} />}
-                {currentView === 'admin' && user?.role === UserRole.ADMIN && <AdminPanel lang={lang} />}
+                {currentView === 'dashboard' && (
+                  <ErrorBoundary key="dashboard-boundary">
+                    <Dashboard lang={lang} role={user?.role} onSelectDPR={navigateToEvaluation} />
+                  </ErrorBoundary>
+                )}
+                {currentView === 'dpr-management' && (
+                  <ErrorBoundary key="dpr-boundary">
+                    <DPRManagement lang={lang} role={user?.role} onEvaluate={navigateToEvaluation} />
+                  </ErrorBoundary>
+                )}
+                {currentView === 'evaluation' && (
+                  <ErrorBoundary key="eval-boundary">
+                    <DPREvaluation id={selectedDprId} lang={lang} />
+                  </ErrorBoundary>
+                )}
+                {currentView === 'analytics' && (
+                  <ErrorBoundary key="analytics-boundary">
+                    <Analytics lang={lang} />
+                  </ErrorBoundary>
+                )}
+                {currentView === 'admin' && user?.role === UserRole.ADMIN && (
+                  <ErrorBoundary key="admin-boundary">
+                    <AdminPanel lang={lang} />
+                  </ErrorBoundary>
+                )}
+                {currentView === 'settings' && (
+                  <div className="flex items-center justify-center min-h-[400px]">
+                    <div className="text-center space-y-4">
+                      <div className="w-16 h-16 rounded-2xl bg-gov-surface border border-gov-border flex items-center justify-center mx-auto">
+                        <Settings size={32} className="text-gov-text-muted" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white">Coming Soon</h3>
+                      <p className="text-sm text-gov-text-muted">This feature is under development.</p>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </ErrorBoundary>
