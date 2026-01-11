@@ -8,6 +8,10 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        fs: {
+          strict: false
+        },
+        historyApiFallback: true // Ensures SPA fallback for client-side routing
       },
       plugins: [react()],
       define: {

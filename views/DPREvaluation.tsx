@@ -391,8 +391,6 @@ const DPREvaluation: React.FC<DPREvaluationProps> = ({ id, lang }) => {
             >
               {[
                 { id: 'structure', label: 'Structure', icon: FileText },
-                { id: 'risks', label: 'Risk Analysis', icon: AlertTriangle },
-                { id: 'compliance', label: 'Compliance', icon: ShieldCheck },
                 { id: 'insights', label: 'AI Insights', icon: Cpu }
               ].map((tab) => (
                 <motion.button
@@ -716,53 +714,6 @@ const DPREvaluation: React.FC<DPREvaluationProps> = ({ id, lang }) => {
                           </ul>
                         </motion.div>
                       )}
-
-                      {/* Key Metrics Grid */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <motion.div
-                          className="p-5 rounded-2xl bg-gov-card border border-gov-border/20"
-                          whileHover={{ scale: 1.02 }}
-                        >
-                          <Award size={18} className="text-gov-primary mb-2" />
-                          <div className="text-2xl font-black text-white">
-                            {evaluationData?.overallScore?.qualityScore || 0}%
-                          </div>
-                          <div className="text-[9px] font-bold text-gov-text-muted uppercase">Quality Score</div>
-                        </motion.div>
-
-                        <motion.div
-                          className="p-5 rounded-2xl bg-gov-card border border-gov-border/20"
-                          whileHover={{ scale: 1.02 }}
-                        >
-                          <Gauge size={18} className="text-gov-success mb-2" />
-                          <div className="text-2xl font-black text-white">
-                            {evaluationData?.overallScore?.completenessScore || 0}%
-                          </div>
-                          <div className="text-[9px] font-bold text-gov-text-muted uppercase">Completeness</div>
-                        </motion.div>
-
-                        <motion.div
-                          className="p-5 rounded-2xl bg-gov-card border border-gov-border/20"
-                          whileHover={{ scale: 1.02 }}
-                        >
-                          <Scale size={18} className="text-gov-warning mb-2" />
-                          <div className="text-2xl font-black text-white">
-                            {evaluationData?.overallScore?.complianceScore || 0}%
-                          </div>
-                          <div className="text-[9px] font-bold text-gov-text-muted uppercase">Compliance</div>
-                        </motion.div>
-
-                        <motion.div
-                          className="p-5 rounded-2xl bg-gov-card border border-gov-border/20"
-                          whileHover={{ scale: 1.02 }}
-                        >
-                          <TrendingUp size={18} className="text-gov-success mb-2" />
-                          <div className="text-2xl font-black text-white">
-                            {evaluationData?.overallScore?.confidenceScore || 0}%
-                          </div>
-                          <div className="text-[9px] font-bold text-gov-text-muted uppercase">Confidence</div>
-                        </motion.div>
-                      </div>
                     </motion.div>
                   )}
                 </>
